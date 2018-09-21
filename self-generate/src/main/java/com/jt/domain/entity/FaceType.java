@@ -12,48 +12,33 @@ import io.swagger.annotations.ApiModelProperty;
 
 @JsonInclude(Include.NON_NULL)
 @ApiModel(description = "头像挂件")
-public class Pendant implements Serializable {
+public class FaceType implements Serializable {
 
  	private static final long serialVersionUID = 1L;
     /**
-    * 主键
+    * 
     */
-    @ApiModelProperty("主键")   
+    @ApiModelProperty("")   
     private Integer id;
     /**
-    * 挂件标题
+    * 分类名称
     */
-    @ApiModelProperty("挂件标题")   
-    private String title;
+    @ApiModelProperty("分类名称")   
+    private String name;
     /**
-    * 挂件封面
+    * 0/表示通用 1/表示微信 2/表示百度
     */
-    @ApiModelProperty("挂件封面")   
-    private String cover;
+    @ApiModelProperty("0/表示通用 1/表示微信 2/表示百度")   
+    private Integer type;
     /**
-    * 挂件分类
+    * 
     */
-    @ApiModelProperty("挂件分类")   
-    private String type;
-    /**
-    * 挂件位置
-    */
-    @ApiModelProperty("挂件位置")   
-    private String position;
-    /**
-    * 挂件需求
-    */
-    @ApiModelProperty("挂件需求")   
-    private String need;
-    /**
-    * 权重
-    */
-    @ApiModelProperty("权重")   
+    @ApiModelProperty("")   
     private Integer sort;
     /**
-    * 启用状态：t/启用，f/停用
+    * 启用状态 t/启用 f/停用
     */
-    @ApiModelProperty("启用状态：t/启用，f/停用")   
+    @ApiModelProperty("启用状态 t/启用 f/停用")   
     private String status;
     /**
     * 创建时间
@@ -69,45 +54,14 @@ public class Pendant implements Serializable {
     private Date updateAt;
     
     
-    public String getTitle(){
-    	return title;
+    public String getName(){
+    	return name;
     }
     
-    public void setTitle(String title){
-    	this.title = title;
+    public void setName(String name){
+    	this.name = name;
     }
     
-    public String getCover(){
-    	return cover;
-    }
-    
-    public void setCover(String cover){
-    	this.cover = cover;
-    }
-    
-    public String getType(){
-    	return type;
-    }
-    
-    public void setType(String type){
-    	this.type = type;
-    }
-    
-    public String getPosition(){
-    	return position;
-    }
-    
-    public void setPosition(String position){
-    	this.position = position;
-    }
-    
-    public String getNeed(){
-    	return need;
-    }
-    
-    public void setNeed(String need){
-    	this.need = need;
-    }
     
     
     public String getStatus(){
@@ -141,11 +95,8 @@ public class Pendant implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", title=").append(title);
-        sb.append(", cover=").append(cover);
+        sb.append(", name=").append(name);
         sb.append(", type=").append(type);
-        sb.append(", position=").append(position);
-        sb.append(", need=").append(need);
         sb.append(", sort=").append(sort);
         sb.append(", status=").append(status);
         sb.append(", createAt=").append(createAt);

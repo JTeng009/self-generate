@@ -27,15 +27,15 @@ import freemarker.template.Template;
  */
 public class CodeGenerateUtils {
 
-    private final String URL = "";
-    private final String USER = "";
-    private final String PASSWORD = "";
+    private final String URL = "jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&useSSL=true";
+    private final String USER = "root";
+    private final String PASSWORD = "123456";
     private final String DRIVER = "com.mysql.jdbc.Driver";
-    private final String tableName = "G_APP_PENDANT";
+    private final String tableName = "w_app_face_type";
     private final String ENTITY_PACKAGE_NAME = "com.jt.domain";
     private final String tableAnnotation = "头像挂件";
     private final String diskPath = System.getProperty("user.dir") + "/src/main/java/com/jt/domain/entity/";
-    private final String className = "Pendant";
+    private final String className = "FaceType";
 
     public Connection getConnection() throws Exception {
         Class.forName(DRIVER);
