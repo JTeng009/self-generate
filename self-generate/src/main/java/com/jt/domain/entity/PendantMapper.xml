@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jt.domain.entity.Pendant" >
+  <resultMap id="BaseResultMap" type="com.jt.domain.entity.Pendant">
+  	<id column="id" property="id" jdbcType="INTEGER" />
+  	<result column="title" property="title" jdbcType="VARCHAR"/>
+  	<result column="cover" property="cover" jdbcType="VARCHAR"/>
+  	<result column="type" property="type" jdbcType="VARCHAR"/>
+  	<result column="position" property="position" jdbcType="VARCHAR"/>
+  	<result column="need" property="need" jdbcType="VARCHAR"/>
+  	<result column="sort" property="sort" jdbcType="INTEGER"/>
+  	<result column="status" property="status" jdbcType="CHAR"/>
+  	<result column="create_at" property="createAt" jdbcType="DATETIME"/>
+  	<result column="update_at" property="updateAt" jdbcType="DATETIME"/>
+  </resultMap>
+  
+  <sql id="Base_Column_List">	
+  	id, title, cover, type, position, need, sort, status, create_at, update_at
+  </sql>
+  
+  <sql id="Example_Where_Clause">
+	<where>
+	  <if test="id != null">
+		and id = #{id,jdbcType=INTEGER}
+	  </if>
+	  <if test="title != null">
+		and title = #{title,jdbcType=VARCHAR}
+	  </if>
+	  <if test="cover != null">
+		and cover = #{cover,jdbcType=VARCHAR}
+	  </if>
+	  <if test="type != null">
+		and type = #{type,jdbcType=VARCHAR}
+	  </if>
+	  <if test="position != null">
+		and position = #{position,jdbcType=VARCHAR}
+	  </if>
+	  <if test="need != null">
+		and need = #{need,jdbcType=VARCHAR}
+	  </if>
+	  <if test="sort != null">
+		and sort = #{sort,jdbcType=INTEGER}
+	  </if>
+	  <if test="status != null">
+		and status = #{status,jdbcType=CHAR}
+	  </if>
+	  <if test="createAt != null">
+		and create_at = #{create_at,jdbcType=DATETIME}
+	  </if>
+	  <if test="updateAt != null">
+		and update_at = #{update_at,jdbcType=DATETIME}
+	  </if>
+	</where>
+  </sql>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="java.util.Map">
+  	SELECT 
+  	<include refid="Base_Column_List"/>
+  	FROM G_APP_PENDANT
+  	<include refid="Example_Where_Clause"/>
+  	<if test="_BY != null" >
+      ORDER BY #{_BY,jdbcType=VARCHAR}
+    </if>
+    <if test="_LM != null" >
+      LIMIT #{_LM,jdbcType=INTEGER}
+    </if>
+    <if test="_ST != null" >
+      OFFSET #{_ST,jdbcType=INTEGER}
+    </if>
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  	SELECT
+  	<include refid="Base_Column_List"/>
+  	FROM G_APP_PENDANT
+  	WHERE id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="countByExample" resultMap="java.lang.Integer" parameterType="java.util.Map">
+  	SELECT COUNT(*) FROM G_APP_PENDANT
+  	<include refid="Example_Where_Clause"/>
+  </select>
+  
+  <insert id="insert" parameterType="com.jt.domain.entity.Pendant">
+  	INSERT INTO G_APP_PENDANT (id, title, cover, type, position,
+  	need, sort, status, create_at, update_at)
+  	VALUES (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR},
+  	#{type,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{need,jdbcType=VARCHAR},
+  	#{sort,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, #{createAt,jdbcType=DATETIME},
+  	#{updateAt,jdbcType=DATETIME})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.jt.domain.entity.Pendant">
+  	INSERT INTO G_APP_PENDANT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="cover != null" >
+        cover,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="need != null" >
+        need,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null" >
+        #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="need != null" >
+        #{need,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=DATETIME},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=DATETIME},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.jt.domain.entity.Pendant">
+  	UPDATE G_APP_PENDANT SET 
+  	  id = #{id,jdbcType=INTEGER}, 
+  	  title = #{title,jdbcType=VARCHAR}, 
+  	  cover = #{cover,jdbcType=VARCHAR}, 
+  	  type = #{type,jdbcType=VARCHAR}, 
+  	  position = #{position,jdbcType=VARCHAR}, 
+  	  need = #{need,jdbcType=VARCHAR}, 
+  	  sort = #{sort,jdbcType=INTEGER}, 
+  	  status = #{status,jdbcType=CHAR}, 
+  	  create_at = #{createAt,jdbcType=DATETIME}, 
+  	  update_at = #{updateAt,jdbcType=DATETIME}
+    WHERE id = #{id,jdbcType=INTEGER} 
+  </update>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.jt.domain.entity.Pendant" >
+    UPDATE G_APP_PENDANT
+    <set>
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null" >
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="need != null" >
+        need = #{need,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=DATETIME},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=DATETIME},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=INTEGER} 
+  </update>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM G_APP_PENDANT
+    WHERE id = #{id,jdbcType=INTEGER} 
+  </delete>
+  
+</mapper>
