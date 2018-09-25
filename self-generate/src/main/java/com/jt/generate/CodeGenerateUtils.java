@@ -30,7 +30,6 @@ public class CodeGenerateUtils {
     private final String URL = "jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&useSSL=true";
     private final String USER = "root";
     private final String PASSWORD = "123456";
-    private final String DRIVER = "com.mysql.jdbc.Driver";
     private final String tableName = "w_app_face_type";
     private final String ENTITY_PACKAGE_NAME = "com.jt.domain";
     private final String tableAnnotation = "头像挂件";
@@ -38,7 +37,7 @@ public class CodeGenerateUtils {
     private final String className = "FaceType";
 
     public Connection getConnection() throws Exception {
-        Class.forName(DRIVER);
+        Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
         return connection;
     }
@@ -63,8 +62,7 @@ public class CodeGenerateUtils {
                 // 获取字段名称
                 columnClass.setColumnName(resultSet.getString("COLUMN_NAME"));
                 // 获取字段类型
-                columnClass.setColumnType(
-                        "INT".equals(resultSet.getString("TYPE_NAME")) ? "INTEGER" : resultSet.getString("TYPE_NAME"));
+                columnClass.setColumnType(jdbcTypeChange(resultSet.getString("TYPE_NAME")));
                 // 转换字段名称，如 sys_name 变成 SysName
                 columnClass.setChangeColumnName(replaceUnderLineAndUpperCase(resultSet.getString("COLUMN_NAME")));
                 // 字段在数据库的注释
@@ -220,4 +218,14 @@ public class CodeGenerateUtils {
         return StringUtils.capitalize(result);
     }
 
+    private String jdbcTypeChange(String type) {
+        switch (type) {
+        case "INT":
+            return "INTEGER";
+        case "DATETIME":
+            return "TIMESTAMP";
+        default:
+            return type;
+        }
+    }
 }

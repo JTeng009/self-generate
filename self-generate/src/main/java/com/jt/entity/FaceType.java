@@ -1,4 +1,4 @@
-package com.jt.domain.entity;
+package com.jt.entity;
 
 import java.io.Serializable;
 import java.util.Date;

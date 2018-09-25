@@ -27,7 +27,7 @@ public class ${class_name} implements Serializable {
     private Integer ${model.changeColumnName?uncap_first};
     <#elseif (model.columnType = 'VARCHAR' || model.columnType = 'TEXT' || model.columnType = 'CHAR')>
     private String ${model.changeColumnName?uncap_first};
-    <#elseif model.columnType = 'TIMESTAMP'|| model.columnType = 'DATETIME'>
+    <#elseif model.columnType = 'TIMESTAMP'>
     <#-- 格式化时间 -->
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date ${model.changeColumnName?uncap_first};
